@@ -9,7 +9,7 @@ char** ArgName(int argc, char *argv[]) {
 
 
 	// retstinrgse gelicek değerler için alan ayırıyoruz.
-	retStrings = /*(char**)*/malloc(sizeof(char*) * argc);
+	retStrings = (char**)malloc(sizeof(char*) * argc);
 
 	if (retStrings == NULL) {
 		printf("Bellek yonteminde hata.\n");
