@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-int argumentparser(int argc, char *argv[],int *val );
+int** argumentparser(int argc, char *argv[]);
 char** ArgName(int argc, char *argv[]);
-void freeStringArray(char** arr);
+void freeStringArray(char** arr, int** arr1);
 
 
 int main(int argc, char* argv[])
@@ -22,20 +22,18 @@ int main(int argc, char* argv[])
 			printf("Lutfen argumaninizin = %s basina -- koyunuz !\n", str);
 		free(str);
 	}
+
+
+
 	//yazma için şurayı halletmek lazım
-
-	int* n;
-	n = malloc(argc * sizeof(int));
-	argumentparser(argc, argv, n);
-	char** result = ArgName(argc, argv);
-
-	if (result != NULL) {
-		for (int i = 0; result[i] != NULL; i++) {
-			printf("String %s value: %d\n", result[i],n[i]);
+	int** value = argumentparser(argc, argv);
+	char** name = ArgName(argc, argv);
+	if (name != NULL) {
+		for (int i = 0; name[i] != NULL && value[i] != NULL ; i++) {
+			printf("String %s value: %d\n", name[i],*value[i]);
 		}
-
-		freeStringArray(result);
+		freeStringArray(name,value);
+		//freeStringArray(name);
 	}
-	free(n);
 	return 0;
 }

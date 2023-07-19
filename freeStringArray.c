@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 
-void freeStringArray(char** arr) {
+void freeStringArray(char** arr,int** arr1) {
 	if (arr == NULL)
 		return;
 
@@ -13,4 +13,14 @@ void freeStringArray(char** arr) {
 	}
 
 	free(arr);
+
+	if (arr1 == NULL)
+		return;
+
+	for (int i = 0; arr1[i] != NULL; i++) {
+		free(arr1[i]);
+	}
+
+	free(arr1);
+
 }
