@@ -3,11 +3,11 @@
 #include <string.h>
 #include <ctype.h>
 
-int** argumentparser(int argc, char *argv[])
+char** argumentparser(int argc, char *argv[])
 {
-	int **val = NULL;
+	char **val = NULL;
 	int LastVal = 0;
-	val = (int**)malloc(argc * sizeof(int*));
+	val = (char**)malloc(argc * sizeof(char*));
 
 //Argümanda ki sayıları ayırıyoruz
 	if(argc>=2) {
@@ -24,9 +24,8 @@ int** argumentparser(int argc, char *argv[])
 
 				if(ret != NULL) {
 					ret++;
-					val[LastVal] = malloc(sizeof(int));
-					*val[LastVal] = atoi(ret);
-					printf("%d\n",*val[LastVal]);
+					val[LastVal] = malloc(sizeof(char));
+					val[LastVal] = strdup(ret);
 					LastVal++;
 				}
 			}
