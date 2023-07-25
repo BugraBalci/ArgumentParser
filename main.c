@@ -5,8 +5,15 @@
 char** argumentparser(int argc, char *argv[]);
 char** ArgName(int argc, char *argv[]);
 void freeStringArray(char** arr);
+struct structWay* argumanOlustur(char *isim, char *deger ,int argSayisi);
+struct structWay {
+	char* key;
+	char *value;
+};
+struct Arguments Argumanlar(char* value[], char* key[], int argc);
 char * readFile(char *file)
 {
+	//printf("%s",a);
 	FILE *fptr  = fopen(file,"r");
 		if (fptr == NULL){
 			printf("Dosya yolu okunamadi: %s\n", file);
@@ -58,14 +65,25 @@ int main(int argc, char* argv[])
 	char** name = ArgName(argc, argv);
 
 	//Dosya yoluna sahip argümanları çıkartmak için
-	char *asd ="filepath";
-	for(int i=0; i < argc ; i++) {
-			if(strcmp(name[i],asd) == 0) {
-				char * data = readFile(value[i]);
-				printf("ah bedava sirke sen baldan tatlısın icerde %s\n",data);
-				break ;
-			}
+//	char *asd ="filepath";
+//	for(int i=0; i < argc ; i++) {
+//			if(strcmp(name[i],asd) == 0) {
+//				char * data = readFile(value[i]);
+//				printf("ah bedava sirke sen baldan tatlısın icerde %s\n",data);
+//				free(data);
+//				break ;
+//			}
+//	}
+
+	for(int i =0;i<argc;i++){
+		//struct için
+		struct structWay* argumanlar= argumanOlustur(name[i],value[i],argc);
+		printf(" Value %s\n",argumanlar->value);
+		printf(" Key %s\n",argumanlar->key);
+		free(argumanlar);
 	}
+
+
 
 
 	if (name != NULL) {

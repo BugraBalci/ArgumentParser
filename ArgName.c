@@ -7,7 +7,6 @@ char** ArgName(int argc, char *argv[]) {
 	char** retStrings = NULL;
 	int retCount = 0;
 
-
 	// retstinrgse gelicek değerler için alan ayırıyoruz.
 	retStrings = (char**)malloc(sizeof(char*) * argc);
 
